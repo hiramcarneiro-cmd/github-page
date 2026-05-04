@@ -8,7 +8,7 @@
   </li>
 
   <li>
-    <a href="portfolio.pdf" target="_blank">Abrir Portifólio</a>
+    <a href="portifolio.pdf" target="_blank">Abrir Portifólio</a>
     <br>
     <iframe src="portifolio.pdf" width="100%" height="500px"></iframe>
   </li>
