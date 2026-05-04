@@ -8,8 +8,8 @@
   </li>
 
   <li>
-    <a href="portfolio.pdf" target="_blank">Abrir Portfólio</a>
+    <a href="portfolio.pdf" target="_blank">Abrir Portifólio</a>
     <br>
-    <iframe src="portfolio.pdf" width="100%" height="500px"></iframe>
+    <iframe src="portifolio.pdf" width="100%" height="500px"></iframe>
   </li>
 </ul>
