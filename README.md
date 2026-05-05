@@ -1,20 +1,10 @@
-<style>
-  body {
-    background-image: url("fundo.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-  }
-
-  h2, ul, li, a {
-    color: white;
-  }
-
-  iframe {
-    border: none;
-  }
-</style>
+<div style="
+  background-image: url('fundo.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  color: white;
+">
 
 <h2>Meus PDFs</h2>
 
@@ -26,8 +16,10 @@
   </li>
 
   <li>
-    <a href="portifolio.pdf" target="_blank">Abrir Portifólio</a>
+    <a href="portifolio.pdf" target="_blank">Abrir Portfólio</a>
     <br>
     <iframe src="portifolio.pdf" width="100%" height="500px"></iframe>
   </li>
 </ul>
+
+</div>
