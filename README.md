@@ -1,4 +1,23 @@
-<h2>Meus PDFs</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Minhas Informações</title>
+
+  <style>
+    body {
+      background-image: url("fundo.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+<h2>Minhas informações</h2>
 
 <ul>
   <li>
