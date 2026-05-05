@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Minhas Informações</title>
+<style>
+  body {
+    background-image: url("fundo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
 
-  <style>
-    body {
-      background-image: url("fundo.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-  </style>
-</head>
+  h2, ul, li, a {
+    color: white;
+  }
 
-<body>
+  iframe {
+    border: none;
+  }
+</style>
 
-<h2>Minhas informações</h2>
+<h2>Meus PDFs</h2>
 
 <ul>
   <li>
@@ -33,6 +31,3 @@
     <iframe src="portifolio.pdf" width="100%" height="500px"></iframe>
   </li>
 </ul>
-
-</body>
-</html>
