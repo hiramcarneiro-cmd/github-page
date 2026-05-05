@@ -1,22 +1,28 @@
-<div style="position: relative;">
+<div style="
+  background-image: url('fundo.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+">
 
-  <img src="fundo.jpg" style="
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 0;
-  ">
+<h2 style="color: white;">Minhas informações</h2>
 
-  <div style="position: relative; z-index: 1;">
+<ul style="color: white;">
+  <li>
+    <a href="hiram-curriculo.pdf" target="_blank" style="color: yellow;">
+      Abrir Currículo
+    </a>
+    <br>
+    <iframe src="hiram-curriculo.pdf" width="100%" height="500px"></iframe>
+  </li>
 
-    <h2>Minhas Informações</h2>
+  <li>
+    <a href="portifolio.pdf" target="_blank" style="color: yellow;">
+      Abrir Portifólio
+    </a>
+    <br>
+    <iframe src="portifolio.pdf" width="100%" height="500px"></iframe>
+  </li>
+</ul>
 
-    <ul>
-      <li>
-        <a href="hiram-curriculo.pdf" target="_blank">Abrir Currículo</a>
-      </li>
-    </ul>
-
-  </div>
 </div>
