@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
 <h2>Minhas informações</h2>
 
 <ul>
@@ -32,3 +33,6 @@
     <iframe src="portifolio.pdf" width="100%" height="500px"></iframe>
   </li>
 </ul>
+
+</body>
+</html>
