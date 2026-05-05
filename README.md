@@ -1,11 +1,8 @@
+<h2>Minhas Informações</h2>
 
 <div align="center">
-
-<img src="fundo.jpg" width="100%" style="position:absolute; z-index:-1; opacity:0.3;">
-
+  <img src="fundo.jpg" width="100%">
 </div>
-
-<h2>Minhas Informações</h2>
 
 <ul>
   <li>
