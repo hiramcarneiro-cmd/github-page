@@ -135,9 +135,8 @@
   <!-- CONTATO -->
   <h2>Contato</h2>
   <div class="contato">
-    <a href="https://github.com/" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-    <a href="mailto:seuemail@email.com">Email</a>
+    <a href="https://github.com/hiramcarneiro-cmd" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/hiram-p-carneiro-35927b3b6/" target="_blank">LinkedIn</a>
   </div>
 
 </div>
