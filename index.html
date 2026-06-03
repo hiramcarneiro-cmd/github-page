@@ -296,8 +296,11 @@ onAuthStateChanged(auth, user => {
 
     if(user){
 
-        status.innerHTML =
-            "Logado como: " + user.email;
+        status.innerHTML = `
+            <strong>Usuário autenticado</strong><br>
+            E-mail: ${user.email}<br>
+            UID: ${user.uid}
+        `;
 
     }else{
 
@@ -307,8 +310,3 @@ onAuthStateChanged(auth, user => {
     }
 
 });
-
-</script>
-
-</body>
-</html>
