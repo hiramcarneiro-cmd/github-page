@@ -38,6 +38,45 @@
                 <a class="btn btn-primary btn-xl" href="#about">Saiba Mais</a>
             </div>
         </header>
+        <!-- Login -->
+<section class="content-section bg-light" id="login">
+    <div class="container px-4 px-lg-5 text-center">
+
+        <h2>Área Restrita</h2>
+        <p>Faça login para acessar funcionalidades administrativas.</p>
+
+        <div style="max-width:400px;margin:auto;">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                class="form-control mb-3">
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Senha"
+                class="form-control mb-3">
+
+            <button
+                class="btn btn-primary mb-2"
+                onclick="login()">
+                Entrar
+            </button>
+
+            <button
+                class="btn btn-danger mb-2"
+                onclick="logout()">
+                Sair
+            </button>
+
+            <p id="statusUsuario"></p>
+
+        </div>
+
+    </div>
+</section>
         <!-- About-->
         <section class="content-section bg-light" id="about">
             <div class="container px-4 px-lg-5 text-center">
@@ -191,6 +230,85 @@ Baixar Portifólio
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+<script src="js/scripts.js"></script>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD66Ohz_nrdyYaDp5aKoDi03nzITU9HDro",
+  authDomain: "github-page-6fe87.firebaseapp.com",
+  projectId: "github-page-6fe87",
+  storageBucket: "github-page-6fe87.firebasestorage.app",
+  messagingSenderId: "748735183639",
+  appId: "1:748735183639:web:8615df247dd491a1019552",
+  measurementId: "G-CJ17W3GCTT"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.login = function() {
+
+    const email =
+        document.getElementById("email").value;
+
+    const senha =
+        document.getElementById("senha").value;
+
+    signInWithEmailAndPassword(
+        auth,
+        email,
+        senha
+    )
+    .then(() => {
+        alert("Login realizado com sucesso!");
+    })
+    .catch(error => {
+        alert(error.message);
+    });
+
+};
+
+window.logout = function() {
+
+    signOut(auth)
+        .then(() => {
+            alert("Logout realizado!");
+        });
+
+};
+
+onAuthStateChanged(auth, user => {
+
+    const status =
+        document.getElementById("statusUsuario");
+
+    if(user){
+
+        status.innerHTML =
+            "Logado como: " + user.email;
+
+    }else{
+
+        status.innerHTML =
+            "Nenhum usuário logado";
+
+    }
+
+});
+
+</script>
+
+</body>
 </html>
