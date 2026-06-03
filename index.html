@@ -43,7 +43,10 @@
     <div class="container px-4 px-lg-5 text-center">
 
         <h2>Área Restrita</h2>
-        <p>Faça login para acessar funcionalidades administrativas.</p>
+        <p id="mensagemAcesso">
+    Faça login para liberar os downloads.
+</p>
+
 
         <div style="max-width:400px;margin:auto;">
 
@@ -59,12 +62,19 @@
                 placeholder="Senha"
                 class="form-control mb-3">
 
-            <button
-                class="btn btn-primary mb-2"
-                onclick="login()">
-                Entrar
-            </button>
+	<button
+	    class="btn btn-primary mb-2"
+	    onclick="login()">
+	    Entrar
+	</button>
 
+	<button
+	    class="btn btn-success mb-2"
+	    onclick="cadastrar()">
+	    Criar Conta
+	</button>
+	
+	
             <button
                 class="btn btn-danger mb-2"
                 onclick="logout()">
@@ -135,12 +145,20 @@
                     <em>minhas</em>
                     informações
                 </h2>
-                <a class="btn btn-primary btn-xl" href="hiram-curriculo.pdf" download>
+                <a id="btnCurriculo"
+   class="btn btn-primary btn-xl"
+   href="hiram-curriculo.pdf"
+   download
+   style="display:none;">
 Baixar Currículo
 </a>
 <br><br>
 
-<a class="btn btn-dark btn-xl" href="portifolio.pdf" download>
+<a id="btnPortfolio"
+   class="btn btn-dark btn-xl"
+   href="portifolio.pdf"
+   download
+   style="display:none;">
 Baixar Portifólio
 </a>
             </div>
@@ -208,11 +226,7 @@ Baixar Portifólio
                 <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
             </div>
         </section>
-        <!-- Map-->
-        <div class="map" id="contact">
-            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-            <br />
-            <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
+
         </div>
         <!-- Footer-->
         <footer class="footer text-center">
@@ -240,6 +254,7 @@ from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {
     getAuth,
     signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
     signOut,
     onAuthStateChanged
 }
@@ -272,10 +287,50 @@ window.login = function() {
         senha
     )
     .then(() => {
+
+        localStorage.setItem(
+            "ultimoLogin",
+            new Date().toLocaleString()
+        );
+
         alert("Login realizado com sucesso!");
+
     })
     .catch(error => {
-        alert(error.message);
+
+        alert(
+            "Falha na autenticação: " +
+            error.message
+        );
+
+    });
+
+};
+window.cadastrar = function() {
+
+    const email =
+        document.getElementById("email").value;
+
+    const senha =
+        document.getElementById("senha").value;
+
+    createUserWithEmailAndPassword(
+        auth,
+        email,
+        senha
+    )
+    .then(() => {
+
+        alert("Conta criada com sucesso!");
+
+    })
+    .catch(error => {
+
+        alert(
+            "Erro ao criar conta: " +
+            error.message
+        );
+
     });
 
 };
@@ -293,20 +348,60 @@ onAuthStateChanged(auth, user => {
 
     const status =
         document.getElementById("statusUsuario");
+        
+    const btnCurriculo =
+    document.getElementById("btnCurriculo");
+
+const btnPortfolio =
+    document.getElementById("btnPortfolio");
+
+const mensagemAcesso =
+    document.getElementById("mensagemAcesso");
 
     if(user){
+
+        const ultimoLogin =
+            localStorage.getItem(
+                "ultimoLogin"
+            );
 
         status.innerHTML = `
             <strong>Usuário autenticado</strong><br>
             E-mail: ${user.email}<br>
-            UID: ${user.uid}
+            UID: ${user.uid}<br>
+            Último login: ${
+                ultimoLogin || "Primeiro acesso"
+            }
         `;
+        btnCurriculo.style.display = "inline-block";
+	btnPortfolio.style.display = "inline-block";
+	mensagemAcesso.style.display = "none";
 
     }else{
 
         status.innerHTML =
             "Nenhum usuário logado";
 
+btnCurriculo.style.display = "none";
+btnPortfolio.style.display = "none";
+mensagemAcesso.style.display = "block";
+
     }
 
 });
+
+// Logout automático após 15 minutos
+setTimeout(() => {
+
+    signOut(auth);
+
+    alert(
+        "Sessão encerrada automaticamente por segurança."
+    );
+
+}, 900000);
+
+</script>
+
+</body>
+</html>
